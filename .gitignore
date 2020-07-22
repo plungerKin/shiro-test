@@ -1,0 +1,7 @@
+*.iml
+*.idea
+target/classes
+target
+${sys:LOG_PATH}
+logs
+coverage-report

@@ -1,0 +1,30 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    # https://juejin.im/post/5902e087da2f60005df05c3d?utm_source=tuicool&utm_medium=referral
+    url: jdbc:mysql://127.0.0.1:3306/shiro?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimeZone=Asia/Shanghai"
+    username: "root"
+    password: "root1234"
+    name: dataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-wait: 6000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: LEGACYHTML5
+    cache: false
+    suffix: .html
+    servlet:
+      content-type: text/html
+

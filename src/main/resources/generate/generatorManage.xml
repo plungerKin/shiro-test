@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="./generate/generator.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.zy.ars.base.BaseMapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="${spring.datasource.admin.url}"
+                        userId="${spring.datasource.admin.username}"
+                        password="${spring.datasource.admin.password}">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- model文件 -->
+        <javaModelGenerator targetPackage="${mybatis.generator.java.model.package}" targetProject="src/main/java"/>
+
+        <!-- xml文件 -->
+        <sqlMapGenerator targetPackage="${mybatis.generator.sql.mapper.package}" targetProject="src/main/resources"/>
+
+        <!-- 接口文件 -->
+        <javaClientGenerator targetPackage="${mybatis.generator.java.target.package}" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+
+<!--        <table tableName="user" domainObjectName="User"-->
+<!--        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--        enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--        &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+<!--        <columnOverride column="sex" javaType="com.zy.ars.app.user.constant.SexEnum"/>-->
+<!--        <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        </table>-->
+
+        <!--<table tableName="ar_content" domainObjectName="ArContent"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;
+            <columnOverride column="status" javaType="com.zy.ars.app.content.constant.ContentStatusEnum"/>
+            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>
+        </table>-->
+
+        <!--<table tableName="ar_training" domainObjectName="ArTraining"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="need_vip" javaType="com.zy.ars.app.training.constant.NeedVipEnum"/>-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_training_content" domainObjectName="ArTrainingContent"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_training_package" domainObjectName="ArTrainingPackage"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="package_type" javaType="com.zy.ars.app.training.constant.TrainingPackageTypeEnum"/>-->
+        <!--<columnOverride column="status" javaType="com.zy.ars.app.training.constant.TrainingPackageStatusEnum"/>-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_user_training_content_record" domainObjectName="ArUserTrainingContentRecord"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="voice_engine_type" javaType="com.zy.ars.app.api.constant.VoiceEngineTypeEnum"/>-->
+        <!--<columnOverride column="has_correct" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_user_training_content_app_record" domainObjectName="ArUserTrainingContentAppRecord"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;
+            <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>
+            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>
+        </table>-->
+        <!--<table tableName="ar_grade" domainObjectName="ArGrade"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_user_training_content_spelling_record" domainObjectName="ArUserTrainingContentSpellingRecord"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;
+            <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>
+            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>
+        </table>-->
+        <!--<table tableName="ar_user_training_record" domainObjectName="ArUserTrainingRecord"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;
+            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;
+            <columnOverride column="record_type" javaType="com.zy.ars.app.training.constant.TrainingRecordTypeEnum"/>
+            <columnOverride column="status" javaType="com.zy.ars.app.training.constant.TrainingStatusEnum"/>
+            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>
+        </table>-->
+
+<!--        <table tableName="ar_user_assets" domainObjectName="ArUserAssets"-->
+<!--        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--        enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--        &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+<!--        <columnOverride column="shared" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--        <columnOverride column="shared_pic" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--        <columnOverride column="tip" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--        <columnOverride column="need_reset" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--        <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        </table>-->
+
+        <!--<table tableName="ar_config" domainObjectName="ArConfig"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="ar_rating_config" domainObjectName="ArRatingConfig"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="upper_included" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="ar_phoneme_config" domainObjectName="ArPhonemeConfig"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+        <!--<table tableName="ar_phoneme_text_config" domainObjectName="ArPhonemeTextConfig"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="error_type" javaType="com.zy.ars.app.phoneme.constant.PhonemeErrorTypeEnum"/>-->
+        <!--<columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+        <!--</table>-->
+<!--        <table tableName="ar_order" domainObjectName="ArOrder"-->
+<!--        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--        enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--        &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+<!--        <columnOverride column="status" javaType="com.zy.ars.app.order.constant.OrderStatusEnum"/>-->
+<!--        <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        <columnOverride column="type" javaType="com.zy.ars.app.order.constant.OrderTypeEnum"/>-->
+<!--        </table>-->
+<!--        <table tableName="organization" domainObjectName="Organization"-->
+<!--        enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--        enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--        &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+<!--        <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        </table>-->
+
+        <!--<table tableName="ar_share_config" domainObjectName="ArShareConfig"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--&lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--&lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--<columnOverride column="is_default" javaType="com.zy.ars.app.config.constant.DefaultStatusEnum"/>-->
+        <!--</table>-->
+
+        <!--        <table tableName="ar_share_path" domainObjectName="arSharePath"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+        <!--               enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+        <!--            &lt;!&ndash;<generatedKey column="id" sqlStatement="Mysql"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>&ndash;&gt;-->
+        <!--        </table>-->
+
+
+<!--        <table tableName="ar_user_training_content_app_record_history" domainObjectName="ArUserTrainingContentAppRecordHistory"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--            &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--            <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>-->
+<!--            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        </table>-->
+
+
+<!--        <table tableName="ar_user_training_content_spelling_record_history"-->
+<!--               domainObjectName="ArUserTrainingContentSpellingRecordHistory"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--            &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--            <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>-->
+<!--            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--        </table>-->
+
+<!--        <table tableName="ar_user_training_content_reading_record_history"-->
+<!--               domainObjectName="ArUserTrainingContentReadingRecordHistory"-->
+<!--               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--               enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--            &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--            <columnOverride column="has_correct" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--            <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--            <columnOverride column="voice_engine_type" javaType="com.zy.ars.app.api.constant.VoiceEngineTypeEnum"/>-->
+<!--        </table>-->
+
+<!--                <table tableName="ar_user_training_content_app_record" domainObjectName="ArUserTrainingContentAppRecord"-->
+<!--                       enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--                       enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--                    &lt;!&ndash;手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--                    <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--                    <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>-->
+<!--                    <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--                </table>-->
+
+
+<!--                <table tableName="ar_user_training_content_spelling_record"-->
+<!--                       domainObjectName="ArUserTrainingContentSpellingRecord"-->
+<!--                       enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+<!--                       enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--                    &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--                    <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--                    <columnOverride column="correct" javaType="com.zy.ars.app.training.constant.TrainingSpellingEnum"/>-->
+<!--                    <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--                </table>-->
+
+<!--                <table tableName="ar_user_training_content_reading_record"-->
+<!--                       domainObjectName="ArUserTrainingContentReadingRecord">-->
+<!--                    &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--                    <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--                    <columnOverride column="has_correct" javaType="com.zy.ars.base.constant.YesNoEnum"/>-->
+<!--                    <columnOverride column="enable" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--                    <columnOverride column="voice_engine_type" javaType="com.zy.ars.app.api.constant.VoiceEngineTypeEnum"/>-->
+<!--                    <columnOverride column="record_type" javaType="com.zy.ars.app.training.constant.TrainingContentRecordTypeEnum"/>-->
+<!--                </table>-->
+<!--                <table tableName="ar_user_openid" domainObjectName="ArUserOpenid">-->
+<!--                    &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--                    <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--                    <columnOverride column="is_deleted" javaType="com.zy.ars.base.constant.EnableEnum"/>-->
+<!--                    <columnOverride column="type" javaType="com.zy.ars.app.userOpenId.constant.UserOpenIdTypeEnum"/>-->
+<!--                </table>-->
+
+<!--        <table tableName="user" domainObjectName="User">-->
+<!--            &lt;!&ndash;    手动指定注解：@KeySql(genId = UUIdGenId.class)&ndash;&gt;-->
+<!--            <generatedKey column="id" sqlStatement="Mysql"/>-->
+<!--        </table>-->
+        <table tableName="role" domainObjectName="Role">
+            <!--    手动指定注解：@KeySql(genId = UUIdGenId.class)-->
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
+        <table tableName="permission" domainObjectName="Permission">
+            <!--    手动指定注解：@KeySql(genId = UUIdGenId.class)-->
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
+        <table tableName="role_permission" domainObjectName="RolePermission">
+            <!--    手动指定注解：@KeySql(genId = UUIdGenId.class)-->
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
+        <table tableName="user_role" domainObjectName="UserRole">
+            <!--    手动指定注解：@KeySql(genId = UUIdGenId.class)-->
+            <generatedKey column="id" sqlStatement="Mysql"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
