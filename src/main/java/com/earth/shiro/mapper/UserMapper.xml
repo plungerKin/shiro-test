@@ -168,7 +168,7 @@
   </update>
   <select id="queryUserRoleAndPermissionByUserName" resultMap="UserDetailDto">
      SELECT
-	        <include refid="Alias_Column_List" /> , r.role_name , p.permission_code
+	        <include refid="Alias_Column_List" /> , r.* , p.*
       FROM
           `user` AS u
           LEFT JOIN user_role AS ur ON ur.user_id = u.user_id

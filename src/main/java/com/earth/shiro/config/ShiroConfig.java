@@ -101,21 +101,6 @@ public class ShiroConfig {
         // user 使用rememberMe的用户访问(表示记住我可以访问)
         // perms 对应权限可以访问 能够添加参数判断 perms[sys:c:add]
         // roles 对应的角色可以访问
-        filters.put("/", "anon");
-        filters.put("/login.html", "anon");
-        filters.put("/index.html", "authc");
-        filters.put("/regist.html", "anon");
-        filters.put("/user/login", "anon");
-        filters.put("/user/regist", "anon");
-        filters.put("/static/**", "anon");
-        filters.put("/**", "authc");
-        filters.put("/c_add.html", "perms[sys:c:save]");
-
-        // shiro框架的Filter 已经做了此logout功能,删除对应的session , 只要访问此路径即可
-        filters.put("/logout", "logout");
-
-        filters.put("/test", "perms[url]");
-
 
         shiroFilterFactoryBean.setLoginUrl("/login.html");
         // 设置未授权的页面路径,权限不足跳此页面
