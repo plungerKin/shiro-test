@@ -1,8 +1,8 @@
 package com.earth.shiro;
 
+import com.earth.shiro.config.util.JsonUtils;
 import com.earth.shiro.entity.Dto.UserDetailDto;
 import com.earth.shiro.service.UserService;
-import com.earth.shiro.utils.JsonUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

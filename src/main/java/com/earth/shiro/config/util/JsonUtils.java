@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.earth.shiro.utils;
+package com.earth.shiro.config.util;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
