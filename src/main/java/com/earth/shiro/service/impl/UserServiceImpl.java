@@ -8,6 +8,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,6 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
+    @Transactional
     public void checkLogin(String userName, String passWord , boolean rememberMe) throws Exception {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName, passWord);
