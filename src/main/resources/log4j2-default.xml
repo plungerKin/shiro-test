@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Specify the refresh internal in seconds. -->
+<Configuration monitorInterval="60">
+	<Properties>
+		<Property name="LOGHOME">/apps/logs</Property>
+		<Property name="LOGLEVEL">info</Property>
+	</Properties>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{yy-MM-dd HH:mm:ss} %highlight{%-5level} [%t] [%logger{80}:%L:%M] - %msg%n%xEx" />
+		</Console>
+		<RollingFile name="file" fileName="${LOGHOME}/app.log"
+					 append="true" filePattern="${LOGHOME}/app-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout charset="UTF-8" pattern="%d (%F:%L) %-5p - %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<Filters>
+				<ThresholdFilter level="error" onMatch="DENY" onMismatch="ACCEPT"/>
+			</Filters>
+			<DefaultRolloverStrategy>
+				<Delete basePath="${LOGHOME}" maxDepth="100">
+					<IfFileName glob="*.log" />
+					<IfLastModified age="14d">
+						<IfAny>
+							<IfAccumulatedFileSize exceeds="10GB" />
+							<IfAccumulatedFileCount exceeds="100" />
+						</IfAny>
+					</IfLastModified>
+				</Delete>
+			</DefaultRolloverStrategy>
+		</RollingFile>
+		<RollingFile name="file_error" fileName="${LOGHOME}/app_error.log"
+			append="true" filePattern="${LOGHOME}/app_error-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout charset="UTF-8" pattern="%d (%F:%L) %-5p - %m%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+			<!--<DefaultRolloverStrategy>
+				<Delete basePath="${LOGHOME}" maxDepth="1000">
+					<IfFileName glob="*.log" />
+					<IfLastModified age="30d" />
+				</Delete>
+			</DefaultRolloverStrategy>-->
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="com.earth" level="${LOGLEVEL}" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+			<AppenderRef ref="file_error" />
+		</AsyncLogger>
+		<!-- <AsyncLogger name="com.zy.ossc.schedule" level="debug" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file_job" />
+		</AsyncLogger> -->
+		<Root level="info">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+			<AppenderRef ref="file_error" />
+		</Root>
+	</Loggers>
+</Configuration>

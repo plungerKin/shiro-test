@@ -35,7 +35,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
 
+        <!-- log4j 异步支持 -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -182,17 +192,15 @@
             <resources>
                 <resource>
                     <directory>src/main/java</directory><!--java文件的路径-->
+                    <filtering>false</filtering>
                     <includes>
-                        <include>**/*.*</include>
+                        <include>**/*.java</include>
                     </includes>
                     <!-- <filtering>false</filtering>-->
                 </resource>
                 <resource>
                     <directory>src/main/resources</directory><!--资源文件的路径-->
-                    <includes>
-                        <include>**/*.*</include>
-                    </includes>
-                    <!-- <filtering>false</filtering>-->
+                    <filtering>true</filtering>
                 </resource>
             </resources>
 
